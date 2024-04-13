@@ -1,0 +1,107 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "My task user",
+        "version": "1.0.0",
+        "title": "My task user",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "renuka90priya@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:2203",
+    "basePath": "/api/v1/user",
+    "tags": [],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/otp/sms": {
+            "post": {
+                "tags": [
+                    "Get SMS OTP"
+                ],
+                "summary": "response",
+                "description": "<h2>Note:</h2><h3>sign-up parameters:</h3> {<br> mobileNumber:string,<br>name:string <br>}<br> <b>optional</b>:referralCode:string,subscribeNewsLetter:boolean. SignUp:-required parameters are:mobileNumber",
+                "operationId": "getOTPSMS",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "response",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/getOTPSMS"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "200": {
+                        "description": "Successful Operation"
+                    }
+                }
+            }
+        }
+
+    },
+    
+    "securitySchemes ": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    },
+    "securityDefinitions": {
+        "bearerAuth": {
+            "description":"Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "getOTPSMS": {
+            "type": "object",
+            "required":[
+                "mobileNumber"
+               ],
+            "properties": {
+               
+                "mobileNumber": {
+                    "type": "string"
+                },
+                "referralCode": {
+                    "type": "string"
+                },
+                "subscribeNewsLetter": {
+                    "type": "boolean"
+                }
+            },
+            "example": {
+             
+                "mobileNumber":"9715217992",
+                "referralCode":"HA25465OK",
+                "subscribeNewsLetter":true
+            }
+        }
+       
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
